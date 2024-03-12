@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:giphy_picker/giphy_picker.dart';
-import 'package:giphy_picker/src/model/giphy_repository.dart';
-import 'package:giphy_picker/src/widgets/giphy_error_view.dart';
-import 'package:giphy_picker/src/widgets/giphy_search_page.dart';
-import 'package:giphy_picker/src/widgets/giphy_search_text.dart';
-import 'package:giphy_picker/src/widgets/giphy_thumbnail_grid.dart';
+import 'package:giphyGif/src/model/giphy_repository.dart';
+import 'package:giphyGif/src/widgets/giphy_error_view.dart';
+import 'package:giphyGif/src/widgets/giphy_search_page.dart';
+import 'package:giphyGif/src/widgets/giphy_search_text.dart';
+import 'package:giphyGif/src/widgets/giphy_thumbnail_grid.dart';
+
+import '../../giphy_picker.dart';
 
 /// Defines the function for building pages.
 typedef PageBuilder = Widget Function(BuildContext context, Widget? title);

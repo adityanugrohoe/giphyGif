@@ -1,15 +1,15 @@
-library giphy_picker;
+library giphyGif;
 
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:giphy_picker/src/model/giphy_client.dart';
-import 'package:giphy_picker/src/model/giphy_preview_types.dart';
-import 'package:giphy_picker/src/widgets/giphy_context.dart';
-import 'package:giphy_picker/src/widgets/giphy_search_page.dart';
+import 'package:giphyGif/src/model/giphy_client.dart';
+import 'package:giphyGif/src/model/giphy_preview_types.dart';
+import 'package:giphyGif/src/widgets/giphy_context.dart';
+import 'package:giphyGif/src/widgets/giphy_search_page.dart';
 
-export 'package:giphy_picker/src/model/giphy_client.dart';
-export 'package:giphy_picker/src/widgets/giphy_image.dart';
-export 'package:giphy_picker/src/model/giphy_preview_types.dart';
+export 'package:giphyGif/src/model/giphy_client.dart';
+export 'package:giphyGif/src/widgets/giphy_image.dart';
+export 'package:giphyGif/src/model/giphy_preview_types.dart';
 
 typedef ErrorListener = void Function(GiphyError error);
 
@@ -53,7 +53,7 @@ class GiphyPicker {
             if (showPreviewPage) {
               Navigator.pop(context);
             }
-            // pop giphy_picker
+            // pop giphyGif
             Navigator.pop(context);
           },
           showPreviewPage: showPreviewPage,

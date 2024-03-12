@@ -1,8 +1,8 @@
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
-import 'package:giphy_picker/src/model/giphy_client.dart';
-import 'package:giphy_picker/src/widgets/giphy_attribution_mark.dart';
+import 'package:giphyGif/src/model/giphy_client.dart';
+import 'package:giphyGif/src/widgets/giphy_attribution_mark.dart';
 
 /// Loads and renders a Giphy image.
 class GiphyImage extends StatefulWidget {

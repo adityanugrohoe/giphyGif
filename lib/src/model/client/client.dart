@@ -1,9 +1,9 @@
 import 'dart:async';
 import 'dart:convert';
-import 'package:giphy_picker/src/model/client/collection.dart';
-import 'package:giphy_picker/src/model/client/gif.dart';
-import 'package:giphy_picker/src/model/client/languages.dart';
-import 'package:giphy_picker/src/model/client/rating.dart';
+import 'package:giphyGif/src/model/client/collection.dart';
+import 'package:giphyGif/src/model/client/gif.dart';
+import 'package:giphyGif/src/model/client/languages.dart';
+import 'package:giphyGif/src/model/client/rating.dart';
 import 'package:http/http.dart';
 
 /// The client for accessing the Giphy API.

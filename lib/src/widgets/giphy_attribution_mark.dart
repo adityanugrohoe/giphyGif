@@ -21,7 +21,7 @@ class GiphyAttributionMark extends StatelessWidget {
                   color: Colors.black54,
                   child: Image.asset(
                     'assets/PoweredBy_200px-Black_HorizText.png',
-                    package: 'giphy_picker',
+                    package: 'giphyGif',
                     width: 200,
                     height: 22,
                   ))))
