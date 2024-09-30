@@ -2,19 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:giphyGif/src/widgets/giphy_context.dart';
 import 'package:giphyGif/src/widgets/giphy_search_view.dart';
 
-/// The default implementation of a giphy search page.
+/// The giphy search page.
 class GiphySearchPage extends StatelessWidget {
   final Widget? title;
-  final Color? appBarColor;
 
-  const GiphySearchPage({super.key, this.title, this.appBarColor});
+  const GiphySearchPage({super.key, this.title});
 
   @override
   Widget build(BuildContext context) {
+    final giphy = GiphyContext.of(context);
     return Scaffold(
-      appBar: AppBar(title: title, backgroundColor: appBarColor),
+      appBar: giphy.appBarBuilder(context, title: title),
       body: SafeArea(
-        bottom: GiphyContext.of(context).showGiphyAttribution,
+        bottom: giphy.showGiphyAttribution,
         child: const GiphySearchView(),
       ),
     );

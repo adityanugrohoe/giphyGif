@@ -1,7 +1,7 @@
 name: giphyGif
 description: A fast and customizable animated GIF picker for your flutter app.
-version: 3.0.1
-homepage: https://github.com/firstfloorsoftware/giphyGif
+version: 3.0.2
+homepage: https://github.com/adityanugrohoe/giphyGif
 screenshots:
   - description: 'Browsing trending gifs from Giphy'
     path: example/screenshots/giphy_picker_demo.gif
@@ -9,13 +9,13 @@ screenshots:
     path: example/screenshots/giphy_picker_dark_demo.gif
 
 environment:
-  sdk: ">=2.17.6 <3.0.0"
+  sdk: ">=2.17.6 <4.0.0"
   flutter: ">=1.17.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  http: ^0.13.4
+  http: ^1.2.1
 
 dev_dependencies:
   flutter_test:

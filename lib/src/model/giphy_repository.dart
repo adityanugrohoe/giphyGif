@@ -2,9 +2,8 @@ import 'dart:async';
 import 'dart:collection';
 import 'dart:typed_data';
 import 'package:giphyGif/src/model/repository.dart';
+import 'package:giphyGif/giphyGif.dart';
 import 'package:http/http.dart' as http;
-
-import '../../giphy_picker.dart';
 
 typedef GetCollection = Future<GiphyCollection> Function(
     GiphyClient client, int offset, int limit);

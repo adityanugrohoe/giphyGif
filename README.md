@@ -2,22 +2,21 @@
 
 A Flutter package that allows you to pick animated GIF images from [Giphy](https://giphy.com).
 
-![Gif](https://github.com/firstfloorsoftware/giphyGif/blob/master/example/screenshots/giphy_picker_demo.gif)
+![Gif](https://github.com/adityanugrohoe/giphyGif/blob/master/example/screenshots/giphy_picker_demo.gif)
 
 ## Getting Started
 
 First, you need to register an app at the [Giphy Developers Portal](https://developers.giphy.com/) in order to retrieve an API key.
 
 Pick a GIF:
+
 ```dart
-import 'package:giphyGif/giphy_picker.dart';
+import 'package:giphyGif/giphyGif.dart';
 
 final gif = await GiphyPicker.pickGif(
                   context: context, 
                   apiKey: '[YOUR GIPHY APIKEY]');
 ```
-
-You can add color to the appbar on the GIF search page, and many more!
 
 Display a GIF using the ```GiphyImage``` widget. The following snippet demonstrates how to render a GIF in its original format:
 ```dart
