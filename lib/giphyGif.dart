@@ -35,12 +35,14 @@ class GiphyPicker {
     ResultsBuilder? resultsBuilder,
     WidgetBuilder? noResultsBuilder,
     SearchErrorBuilder? errorBuilder,
+    Color? appBarColor,
   }) async {
     GiphyGif? result;
     await Navigator.push(
       context,
       MaterialPageRoute(
         builder: (BuildContext context) => GiphyContext(
+          appBarColor: appBarColor,
           previewType: previewType,
           apiKey: apiKey,
           rating: rating,
@@ -67,6 +69,7 @@ class GiphyPicker {
           errorBuilder: errorBuilder,
           child: GiphySearchPage(
             title: title,
+            appBarColor: appBarColor,
           ),
         ),
         fullscreenDialog: fullScreenDialog,

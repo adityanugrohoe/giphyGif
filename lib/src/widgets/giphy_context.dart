@@ -10,6 +10,7 @@ typedef AppBarBuilder = PreferredSizeWidget? Function(
   BuildContext context, {
   Widget? title,
   List<Widget>? actions,
+  Color? appBarColor,
 });
 
 /// Defines the function for building search text editors.
@@ -65,7 +66,8 @@ class GiphyContext extends InheritedWidget {
       WidgetBuilder? loadingBuilder,
       ResultsBuilder? resultsBuilder,
       WidgetBuilder? noResultsBuilder,
-      SearchErrorBuilder? errorBuilder})
+      SearchErrorBuilder? errorBuilder,
+      Color? appBarColor})
       : appBarBuilder = appBarBuilder ?? _buildDefaultAppBar,
         searchTextBuilder = searchTextBuilder ?? _buildDefaultSearchText,
         loadingBuilder = loadingBuilder ?? _buildDefaultLoading,
@@ -91,8 +93,16 @@ class GiphyContext extends InheritedWidget {
   }
 
   static PreferredSizeWidget _buildDefaultAppBar(BuildContext context,
-          {Widget? title, List<Widget>? actions}) =>
-      AppBar(title: title);
+          {Widget? title, List<Widget>? actions, Color? appBarColor}) =>
+      AppBar(
+        title: title,
+        backgroundColor: appBarColor,
+        foregroundColor: appBarColor != null
+            ? appBarColor.computeLuminance() > .5
+                ? Colors.black
+                : Colors.white
+            : Colors.black,
+      );
 
   static Widget _buildDefaultSearchText(
     BuildContext context,
