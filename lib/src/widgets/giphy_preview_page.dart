@@ -7,6 +7,7 @@ import 'package:giphyGif/src/widgets/giphy_image.dart';
 class GiphyPreviewPage extends StatelessWidget {
   final GiphyGif gif;
   final Widget? title;
+  final Color? appBarColor;
   final AppBarBuilder appBarBuilder;
   final bool showGiphyAttribution;
   final ValueChanged<GiphyGif>? onSelected;
@@ -15,6 +16,7 @@ class GiphyPreviewPage extends StatelessWidget {
       {super.key,
       required this.gif,
       this.title,
+      this.appBarColor,
       required this.appBarBuilder,
       this.showGiphyAttribution = true,
       required this.onSelected});
@@ -22,13 +24,16 @@ class GiphyPreviewPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final media = MediaQuery.of(context);
-
+    print("appBarColor ${appBarColor}");
     return Scaffold(
-       appBar: AppBar(title: title, actions: <Widget>[
-          IconButton(
-              icon: const Icon(Icons.check),
-              onPressed: () => onSelected?.call(gif))
-        ]),
+        appBar: appBarBuilder(context,
+            title: title,
+            appBarColor: appBarColor,
+            actions: <Widget>[
+              IconButton(
+                  icon: const Icon(Icons.check),
+                  onPressed: () => onSelected?.call(gif))
+            ]),
         body: SafeArea(
           bottom: false,
           child: Center(

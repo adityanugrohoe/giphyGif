@@ -38,6 +38,7 @@ class GiphyPicker {
     Color? appBarColor,
   }) async {
     GiphyGif? result;
+    print("appBarColor home ${appBarColor}");
     await Navigator.push(
       context,
       MaterialPageRoute(

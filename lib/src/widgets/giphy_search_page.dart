@@ -12,12 +12,16 @@ class GiphySearchPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final giphy = GiphyContext.of(context);
+
+    print("appBarColor search page ${appBarColor}");
     return Scaffold(
       appBar:
           giphy.appBarBuilder(context, title: title, appBarColor: appBarColor),
       body: SafeArea(
         bottom: giphy.showGiphyAttribution,
-        child: const GiphySearchView(),
+        child: GiphySearchView(
+          appBarColor: appBarColor,
+        ),
       ),
     );
   }

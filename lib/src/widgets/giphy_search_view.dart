@@ -7,7 +7,9 @@ import 'package:giphyGif/src/widgets/giphy_context.dart';
 
 /// Provides the UI for searching Giphy gif images.
 class GiphySearchView extends StatefulWidget {
-  const GiphySearchView({super.key});
+  final Color? appBarColor;
+
+  GiphySearchView({super.key, this.appBarColor});
 
   @override
   State<GiphySearchView> createState() => _GiphySearchViewState();
@@ -41,6 +43,7 @@ class _GiphySearchViewState extends State<GiphySearchView> {
   Widget build(BuildContext context) {
     final giphy = GiphyContext.of(context);
 
+    print("appBarColor search view ${widget.appBarColor}");
     return Column(children: <Widget>[
       giphy.searchTextBuilder(
         context,
@@ -55,7 +58,8 @@ class _GiphySearchViewState extends State<GiphySearchView> {
                 if (snapshot.hasData) {
                   if (snapshot.data!.totalCount > 0) {
                     final child = giphy.resultsBuilder(
-                        context, snapshot.data!, _scrollController);
+                        context, snapshot.data!, _scrollController,
+                        appBarColor: widget.appBarColor);
                     return NotificationListener(
                       child: RefreshIndicator(
                           child: giphy.showGiphyAttribution

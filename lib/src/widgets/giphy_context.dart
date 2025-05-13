@@ -19,7 +19,8 @@ typedef SearchTextBuilder = Widget Function(BuildContext context,
 
 /// Defines the function for displaying search results.
 typedef ResultsBuilder = Widget Function(BuildContext context,
-    GiphyRepository repo, ScrollController scrollController);
+    GiphyRepository repo, ScrollController scrollController,
+    {Color? appBarColor});
 
 /// Defines the function for displaying runtime errors.
 typedef SearchErrorBuilder = Widget Function(
@@ -43,32 +44,33 @@ class GiphyContext extends InheritedWidget {
   final ResultsBuilder resultsBuilder;
   final WidgetBuilder noResultsBuilder;
   final SearchErrorBuilder errorBuilder;
+  final Color? appBarColor;
 
   /// Debounce delay when searching
   final Duration searchDelay;
 
-  const GiphyContext(
-      {super.key,
-      required super.child,
-      required this.apiKey,
-      this.rating = GiphyRating.g,
-      this.language = GiphyLanguage.english,
-      this.sticker = false,
-      this.onSelected,
-      this.onError,
-      this.showPreviewPage = true,
-      this.showGiphyAttribution = true,
-      this.searchHintText = 'Search Giphy',
-      this.searchDelay = const Duration(milliseconds: 500),
-      this.previewType,
-      AppBarBuilder? appBarBuilder,
-      SearchTextBuilder? searchTextBuilder,
-      WidgetBuilder? loadingBuilder,
-      ResultsBuilder? resultsBuilder,
-      WidgetBuilder? noResultsBuilder,
-      SearchErrorBuilder? errorBuilder,
-      Color? appBarColor})
-      : appBarBuilder = appBarBuilder ?? _buildDefaultAppBar,
+  const GiphyContext({
+    super.key,
+    required super.child,
+    required this.apiKey,
+    this.rating = GiphyRating.g,
+    this.language = GiphyLanguage.english,
+    this.sticker = false,
+    this.onSelected,
+    this.onError,
+    this.showPreviewPage = true,
+    this.showGiphyAttribution = true,
+    this.searchHintText = 'Search Giphy',
+    this.searchDelay = const Duration(milliseconds: 500),
+    this.previewType,
+    this.appBarColor,
+    AppBarBuilder? appBarBuilder,
+    SearchTextBuilder? searchTextBuilder,
+    WidgetBuilder? loadingBuilder,
+    ResultsBuilder? resultsBuilder,
+    WidgetBuilder? noResultsBuilder,
+    SearchErrorBuilder? errorBuilder,
+  })  : appBarBuilder = appBarBuilder ?? _buildDefaultAppBar,
         searchTextBuilder = searchTextBuilder ?? _buildDefaultSearchText,
         loadingBuilder = loadingBuilder ?? _buildDefaultLoading,
         resultsBuilder = resultsBuilder ?? _buildDefaultResults,
@@ -96,12 +98,23 @@ class GiphyContext extends InheritedWidget {
           {Widget? title, List<Widget>? actions, Color? appBarColor}) =>
       AppBar(
         title: title,
+        leading: IconButton(
+            onPressed: () => Navigator.pop(context),
+            icon: Icon(Icons.arrow_back_ios_new)),
+        iconTheme: IconThemeData(
+          color: appBarColor != null
+              ? appBarColor.computeLuminance() > .5
+                  ? Colors.black
+                  : Colors.white
+              : Colors.black,
+        ),
         backgroundColor: appBarColor,
         foregroundColor: appBarColor != null
             ? appBarColor.computeLuminance() > .5
                 ? Colors.black
                 : Colors.white
             : Colors.black,
+        actions: actions,
       );
 
   static Widget _buildDefaultSearchText(
@@ -114,15 +127,13 @@ class GiphyContext extends InheritedWidget {
   static Widget _buildDefaultLoading(BuildContext context) =>
       const Center(child: CircularProgressIndicator());
 
-  static Widget _buildDefaultResults(
-    BuildContext context,
-    GiphyRepository repo,
-    ScrollController scrollController,
-  ) =>
+  static Widget _buildDefaultResults(BuildContext context, GiphyRepository repo,
+          ScrollController scrollController, {Color? appBarColor}) =>
       GiphyThumbnailGrid(
           key: Key('${repo.hashCode}'),
           repo: repo,
-          scrollController: scrollController);
+          scrollController: scrollController,
+          appBarColor: appBarColor);
 
   static Widget _buildDefaultNoResults(BuildContext context) =>
       const Center(child: Text('No results'));

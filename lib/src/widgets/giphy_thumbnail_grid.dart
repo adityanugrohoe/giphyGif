@@ -8,10 +8,11 @@ import 'package:giphyGif/src/widgets/giphy_thumbnail.dart';
 class GiphyThumbnailGrid extends StatefulWidget {
   final GiphyRepository repo;
   final ScrollController? scrollController;
+  final Color? appBarColor;
 
   /// Creates a grid for given repository.
   const GiphyThumbnailGrid(
-      {super.key, required this.repo, this.scrollController});
+      {super.key, required this.repo, this.scrollController, this.appBarColor});
 
   @override
   State<GiphyThumbnailGrid> createState() => _GiphyThumbnailGridState();
@@ -21,6 +22,7 @@ class _GiphyThumbnailGridState extends State<GiphyThumbnailGrid> {
   @override
   Widget build(BuildContext context) {
     final giphy = GiphyContext.of(context);
+    print("appBarColor grid ${widget.appBarColor}");
     return GridView.builder(
         padding: EdgeInsets.fromLTRB(
           10,
@@ -48,6 +50,7 @@ class _GiphyThumbnailGridState extends State<GiphyThumbnailGrid> {
                         showGiphyAttribution: giphy.showGiphyAttribution,
                         onSelected: giphy.onSelected,
                         appBarBuilder: giphy.appBarBuilder,
+                        appBarColor: widget.appBarColor,
                         title: gif.title?.isNotEmpty == true
                             ? Text(gif.title!)
                             : null,
